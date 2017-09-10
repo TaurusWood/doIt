@@ -1,0 +1,9 @@
+{
+  "name": "doIt",
+  "version": "1.0.0",
+  "description": "this is a todo List, baseed on nodeJs and vue",
+  "main": "app.js",
+  "repository": "git@github.com:TaurusWood/doIt.git",
+  "author": "taurus wood",
+  "license": "MIT"
+}
