@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn_error.log*
+
+# Dependency directories
+node_modules/
+
+#dist
+dist/
+
+#mac
+.DS_Store
+._.*
