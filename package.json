@@ -4,6 +4,39 @@
   "description": "this is a todo List, baseed on nodeJs and vue",
   "main": "app.js",
   "repository": "git@github.com:TaurusWood/doIt.git",
+  "scripts": {
+    "dev": "webpack-dev-server --open --config config/webpack.dev.conf.js"
+  },
   "author": "taurus wood",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "vue": "^2.4.2",
+    "vue-loader": "^13.0.4",
+    "vue-template-compiler": "^2.4.2",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-merge": "^4.1.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "iview": "^2.3.2",
+    "vue-router": "^2.7.0",
+    "vuex": "^2.4.0"
+  }
 }

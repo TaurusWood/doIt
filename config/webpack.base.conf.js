@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const OPTIONS = {
   APP_PATH: path.join(__dirname, '../app'),
-  ASSETS_PATH: path.join('../app', 'assets'),
+  ASSETS_PATH: path.join('public', 'assets'),
   DIST_PATH: path.join(__dirname, '../dist'),
 };
 
@@ -21,7 +21,7 @@ const output = {
 };
 
 const resolve = {
-  extensions: ['.js', '.vue'],
+  extensions: ['.js', '.vue', '.scss'],
   alias: {
     'vue$': 'vue/dist/vue.esm.js',
     '@': OPTIONS.APP_PATH
@@ -92,7 +92,7 @@ const assetsRule = {
     loader: 'url-loader',
     options: {
       limit: 10000,
-      name: `${OPTIONS.ASSETS_PATH}/[name].[hash:6].[ext]`
+      name: `${OPTIONS.ASSETS_PATH}/images/[name].[hash:6].[ext]`
     }
   }]
 }
