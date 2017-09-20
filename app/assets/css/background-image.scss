@@ -1,0 +1,11 @@
+@mixin backImgOption {
+  background: {
+    size: 100%;
+    repeat: no-repeat;
+  }
+}
+
+.image-sunflower {
+  @include backImgOption;
+  background-image: url(./assets/images/wallpaper/sunflower.jpg);
+}

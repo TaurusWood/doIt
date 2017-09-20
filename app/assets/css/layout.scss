@@ -1,0 +1,19 @@
+@import "./background-color";
+@import "./background-image";
+
+body {
+  @extend .bg-flamingo;
+  height: 100%;
+  padding: 20px 0;
+}
+
+#app {
+  width: 1200px;
+  min-height: 600px;
+  height: 100%;
+  padding: 12px;
+  margin: auto;
+  box-shadow: 0 0 4px 2px #555;
+  font-size: 14px;
+  @extend .image-sunflower;
+}
