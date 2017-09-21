@@ -5,7 +5,7 @@ import store from '@/store/index.js';
 const login = () => import(/* webpackChunkName: "auxiliary" */ '@/pages/loginPage');
 const guide = () => import(/* webpackChunkName: "auxiliary" */ '@/pages/guidePage');
 const dashboard = () => import(/* webpackChunkName: "main" */ '@/pages/dashboardPage');
-const presonal = () => import(/* webpackChunkName: "template" */ '@/components/dashboard/presonal')
+// const presonal = () => import(/* webpackChunkName: "template" */ '@/components/dashboard/presonal')
 // const work = () => import(/* webpackChunkName: "template" */ '@/components/dashboard/work')
 Vue.use(Router);
 
@@ -30,14 +30,7 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: dashboard,
-      children: [
-        {
-          path: 'presonal',
-          name: '个人',
-          component: presonal
-        }
-      ]
+      component: dashboard
     }
   ]
 });

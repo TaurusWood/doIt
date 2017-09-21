@@ -1,10 +1,5 @@
 <template lang="html">
   <div id="app">
-    <!-- <nav class="aside-nav">
-      <router-link :to="{ name: 'login'}">登录</router-link>
-      <router-link :to="{ name: 'guide'}">引导</router-link>
-      <router-link :to="{ name: 'dashboard'}">面板</router-link>
-    </nav> -->
     <router-view></router-view>
   </div>
 </template>

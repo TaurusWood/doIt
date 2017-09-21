@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     handleLogin() {
-      console.log(this.$router.push)
       this.$router.push({ name: 'dashboard' });
     },
   }
