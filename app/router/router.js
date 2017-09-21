@@ -20,7 +20,7 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      components: {page: login}
+      component: login
     },
     {
       path: '/guide',
@@ -30,7 +30,7 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'dashboard',
-      components: { page: dashboard},
+      component: dashboard,
       children: [
         {
           path: 'presonal',
