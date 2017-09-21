@@ -46,8 +46,9 @@ export default {
   .login-page {
     width: 360px;
     height: 200px;
+    top: 160px;
     position: relative;
-    margin: 150px auto;
+    margin: auto;
     box-shadow: 0 0 6px 3px #222;
     .blur {
       position: absolute;

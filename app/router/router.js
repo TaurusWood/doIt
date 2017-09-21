@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from '@/store/index.js';
 
-const login = () => import(/* webpackChunkName: "auxiliary" */ '@/pages/loginPage.vue');
-const guide = () => import(/* webpackChunkName: "auxiliary" */ '@/pages/guidePage.vue');
+const login = () => import(/* webpackChunkName: "auxiliary" */ '@/pages/loginPage');
+const guide = () => import(/* webpackChunkName: "auxiliary" */ '@/pages/guidePage');
 const dashboard = () => import(/* webpackChunkName: "main" */ '@/pages/dashboardPage');
-
+const presonal = () => import(/* webpackChunkName: "template" */ '@/components/dashboard/presonal')
+// const work = () => import(/* webpackChunkName: "template" */ '@/components/dashboard/work')
 Vue.use(Router);
 
 export default new Router({
@@ -18,7 +20,7 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: login
+      components: {page: login}
     },
     {
       path: '/guide',
@@ -28,7 +30,14 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: dashboard,
+      components: { page: dashboard},
+      children: [
+        {
+          path: 'presonal',
+          name: '个人',
+          component: presonal
+        }
+      ]
     }
   ]
 });

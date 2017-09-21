@@ -5,8 +5,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const OPTIONS = {
   APP_PATH: path.join(__dirname, '../app'),
-  ASSETS_PATH: path.join('public', 'assets'),
   DIST_PATH: path.join(__dirname, '../dist'),
+  ASSETS_PATH: path.join('assets'),
+  STYLE_PATH: path.join('css'),
 };
 
 const entry = {
@@ -123,7 +124,7 @@ const plugins = [
     title: 'doIt'
   }),
   new ExtractTextPlugin({
-    filename: `${OPTIONS.DIST_PATH}/css/[name].css`,
+    filename: `${OPTIONS.STYLE_PATH}/[name].css`,
     allChunks: true,
   })
 ]

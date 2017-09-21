@@ -5,7 +5,7 @@
       <router-link :to="{ name: 'guide'}">引导</router-link>
       <router-link :to="{ name: 'dashboard'}">面板</router-link>
     </nav> -->
-    <router-view></router-view>
+    <router-view name="page"></router-view>
   </div>
 </template>
 
