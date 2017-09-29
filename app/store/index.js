@@ -52,6 +52,8 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-
+    addTodoItem(state, data) {
+      state.todoItem.push(data);
+    }
   }
 })
