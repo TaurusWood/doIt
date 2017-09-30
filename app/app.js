@@ -9,6 +9,11 @@ import 'iview/dist/styles/iview.css';
 
 Vue.use(iview);
 
+// console.log(module, module.hot)
+// if (module.hot) {
+//   module.hot.accept()
+// }
+
 new Vue({
   el: '#app',
   router,
