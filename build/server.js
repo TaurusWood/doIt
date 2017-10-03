@@ -2,7 +2,6 @@ const path = require('path');
 const opn = require('opn');
 
 const webpack = require('webpack');
-
 const webpackConf = require('./webpack.dev.conf');  // 目前就只有开发环境
 
 const koa = require('koa');

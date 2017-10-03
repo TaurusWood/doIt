@@ -16,5 +16,4 @@ module.exports = merge(baseConfig, {
     // 在webpack 2中使用NoErrorsPlugin会有警告提示
     new webpack.NoEmitOnErrorsPlugin()
   ]
-
 })
