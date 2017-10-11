@@ -15,3 +15,7 @@ const doit = new Sequelize(
     }
   }
 )
+
+module.exports = {
+  doit
+}

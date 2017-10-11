@@ -5,9 +5,12 @@ const webpack = require('webpack');
 const webpackConf = require('./webpack.dev.conf');  // 目前就只有开发环境
 
 const koa = require('koa');
+
 const bodyParser = require('koa-bodyparser');
 const serve = require('koa-static');
 const historyApiFallback = require('koa2-history-api-fallback');
+
+const controller = require('../server/controller');
 
 // const json = require('koa-json');
 // const loger = require('koa-logger');
@@ -16,9 +19,6 @@ const app = new koa();
 const compiler = webpack(webpackConf);
 
 const port = 3002;
-
-// handle fallback for HTML5 history API
-// app.use(require('connect-history-api-fallback')());
 
 const devMiddleware = require('koa-webpack-middleware').devMiddleware(compiler, {
   publicPath: webpackConf.output.publicPath,
@@ -54,21 +54,22 @@ const readyPromise = new Promise(resolve => {
 });
 
 app.use(bodyParser());
+app.use(controller());
 
 app.use(async function(ctx, next){
   let start = new Date;
   await next();
   let ms = new Date - start;
-  console.log('%s %s - %s', ctx.method, ctx.url, ms);
+  console.log('Process', ctx.method, ctx.url, ms + 'ms');
 });
 
 app.on('error', function(err, ctx){
   console.log('server error', err);
 });
 
+// handle fallback for HTML5 history API
 app.use(historyApiFallback());
 app.use(serve(path.resolve('dist')));
-
 
 const server = app.listen(port, () => {
   console.log('app is listening in 3002');
