@@ -1,42 +1,37 @@
 <template lang="html">
-  <div class="login-page">
+  <div class="login-page" :style="panelHeight">
     <div class="blur"></div>
     <div class="form">
-      <Form :model="formItem" :label-width="80">
-        <FormItem label="用户名">
-          <Input type="text" v-model="formItem.user" placeholder="请输入">
-            <Icon type="ios-person-outline" slot="prepend"></Icon>
-          </Input>
-        </FormItem>
-        <FormItem label="密码">
-          <Input type="password" v-model="formItem.password" placeholder="请输入">
-            <Icon type="ios-locked-outline" slot="prepend"></Icon>
-          </Input>
-        </FormItem>
-        <FormItem class="action">
-            <Button type="primary" @click="handleLogin">登录</Button>
-            <Button>注册</Button>
-        </FormItem>
-      </Form>
+      <sign-in v-if="showSignIn" @cut="showSignIn = false;"></sign-in>
+      <sign-up v-else @cut="showSignIn = true;"></sign-up>
     </div>
   </div>
 </template>
 
 <script>
+import signIn from '@/components/login/signIn';
+import signUp from '@/components/login/signUp';
+
 export default {
-  name: 'login',
+  name: 'loginPage',
   data () {
     return {
-      formItem: {
-        user: '',
-        password: '',
-      }
+      showSignIn: true
+    }
+  },
+  computed: {
+    panelHeight() {
+      return {
+        height: this.showSignIn ? '200px' : '250px'
+      };
     }
   },
   methods: {
-    handleLogin() {
-      this.$router.push({ name: 'dashboard' });
-    },
+
+  },
+  components: {
+    signUp,
+    signIn
   }
 }
 </script>
