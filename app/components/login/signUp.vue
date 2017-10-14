@@ -40,7 +40,7 @@ export default {
         this.$Message.error('两次密码输入不一致');
         return;
       }
-      this.$http.post('/api/sign_up', this.formItem, function (data) {
+      this.$http.post('/api/auth/sign_up', this.formItem, function (data) {
         console.log(data)
       })
     },
