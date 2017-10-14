@@ -11,6 +11,7 @@ const serve = require('koa-static');
 const historyApiFallback = require('koa2-history-api-fallback');
 
 const controller = require('../server/controller');
+const rest = require('../server/config/rest');
 
 // const json = require('koa-json');
 // const loger = require('koa-logger');
@@ -53,6 +54,7 @@ const readyPromise = new Promise(resolve => {
   resolve();
 });
 
+app.use(rest.restify());
 app.use(bodyParser());
 app.use(controller());
 

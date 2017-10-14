@@ -27,11 +27,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    createAt: {
+    created_at: {
       type: DataTypes.BIGINT,
       allowNull: false
     },
-    updateAt: {
+    updated_at: {
       type: DataTypes.BIGINT,
       allowNull: false
     },
@@ -40,6 +40,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'cat_list'
+    tableName: 'cat_list',
+    timestamps: false
   });
 };

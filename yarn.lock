@@ -7,8 +7,8 @@
   resolved "http://registry.npm.taobao.org/@types/geojson/download/@types/geojson-1.0.4.tgz#f6e011bf3f7eea616cce79b6f1a0722010822f3a"
 
 "@types/node@*":
-  version "8.0.31"
-  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-8.0.31.tgz#d9af61093cf4bfc9f066ca34de0175012cfb0ce9"
+  version "8.0.34"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-8.0.34.tgz#55f801fa2ddb2a40dd6dfc15ecfe1dde9c129fe9"
 
 abbrev@1:
   version "1.1.0"
@@ -916,9 +916,13 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.0.5, bluebird@^3.1.1, bluebird@^3.4.6, bluebird@^3.4.7:
+bluebird@^3.0.5, bluebird@^3.1.1, bluebird@^3.4.7:
   version "3.5.0"
   resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
+
+bluebird@^3.4.6:
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
@@ -3329,8 +3333,8 @@ moment-timezone@^0.5.4:
     moment ">= 2.9.0"
 
 "moment@>= 2.9.0", moment@^2.13.0:
-  version "2.18.1"
-  resolved "http://registry.npm.taobao.org/moment/download/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+  version "2.19.0"
+  resolved "http://registry.npm.taobao.org/moment/download/moment-2.19.0.tgz#44f675ef6b944942762581b1c179fb679e599d67"
 
 ms@2.0.0:
   version "2.0.0"
@@ -4586,9 +4590,9 @@ seq-queue@0.0.5:
   version "0.0.5"
   resolved "http://registry.npm.taobao.org/seq-queue/download/seq-queue-0.0.5.tgz#d56812e1c017a6e4e7c3e3a37a1da6d78dd3c93e"
 
-sequelize@^4.11.4:
-  version "4.11.4"
-  resolved "http://registry.npm.taobao.org/sequelize/download/sequelize-4.11.4.tgz#adb4a781d37d1051a1e1ca3d5a5ee7e69a37d3cc"
+sequelize@^4.13.8:
+  version "4.13.8"
+  resolved "http://registry.npm.taobao.org/sequelize/download/sequelize-4.13.8.tgz#5aa2238e972a723446304bf5162ed1ebcab98023"
   dependencies:
     bluebird "^3.4.6"
     cls-bluebird "^2.0.1"

@@ -16,15 +16,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.CHAR(128),
       allowNull: false
     },
-    createdAt: {
+    created_at: {
       type: DataTypes.BIGINT,
       allowNull: false
     },
-    updateAt: {
+    updated_at: {
       type: DataTypes.BIGINT,
       allowNull: false
     }
   }, {
-    tableName: 'user'
+    tableName: 'user',
+    timestamps: false
   });
 };
