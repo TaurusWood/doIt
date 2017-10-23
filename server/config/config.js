@@ -6,4 +6,9 @@ const CONFIG = {
   PORT: 3306  // mysql默认3306
 };
 
-module.exports = CONFIG;
+const TOKEN_PRIMARY_KEY = 'woood';
+
+module.exports = {
+  CONFIG,
+  TOKEN_PRIMARY_KEY
+};

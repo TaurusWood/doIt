@@ -1,19 +1,18 @@
-const db = require('../config/db');
-const doitDB = db.doit;
-const userTable = doitDB.import('../schema/user');
+const doit = require('../config/db');
+const userTable = doit.userTable;
 
 module.exports = {
-  checkName: async (username) => {
+  checkName: async (nick) => {
     const result = await userTable.findOne({
       where: {
-        username: username
+        nick: nick
       }
     })
     return result ? false : true;
   },
   signUp: async (data) => {
     await userTable.create({
-      username: data.username,
+      nick: data.nick,
       password: data.password,
       created_at: Date.now(),
       updated_at: Date.now()
@@ -23,24 +22,22 @@ module.exports = {
   signIn: async (userInfo) => {
     const result = await userTable.findOne({
       where: {
-        username: userInfo.username,
+        nick: userInfo.nick,
         password: userInfo.password
       }
     })
-    console.log(result);
-    return result ? true : false;
+    return result;
   },
   updatePassword: async (userInfo) => {
     const result = await userTable.update(
       { password: userInfo.newPassword },
       {
         where: {
-          username: userInfo.username,
+          nick: userInfo.nick,
           password: userInfo.password
         }
       }
     );
-    console.log(result[0], typeof result[0]);
     return result[0] ? true : false;
   }
 }

@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const webpackConf = require('./webpack.dev.conf');  // 目前就只有开发环境
 
 const koa = require('koa');
+const jwt = require('jsonwebtoken');
 
 const bodyParser = require('koa-bodyparser');
 const serve = require('koa-static');
@@ -12,6 +13,7 @@ const historyApiFallback = require('koa2-history-api-fallback');
 
 const controller = require('../server/controller');
 const rest = require('../server/config/rest');
+const TOKEN_PRIMARY_KEY = require('../server/config/config').TOKEN_PRIMARY_KEY;
 
 // const json = require('koa-json');
 // const loger = require('koa-logger');
@@ -54,16 +56,36 @@ const readyPromise = new Promise(resolve => {
   resolve();
 });
 
-app.use(rest.restify());
-app.use(bodyParser());
-app.use(controller());
-
 app.use(async function(ctx, next){
   let start = new Date;
   await next();
   let ms = new Date - start;
   console.log('Process', ctx.method, ctx.url, ms + 'ms');
 });
+
+// token valid
+app.use(async function (ctx, next) {
+  if (ctx.url.indexOf('/api/auth/') === -1) {
+    const token = ctx.request.headers['x-access-token']
+    jwt.verify(token, TOKEN_PRIMARY_KEY, function (err, decoded) {
+      if (err) {
+          ctx.response.status = 401;
+          ctx.response.body = {
+            code: -100,
+            message: 'invalid token',
+          };
+      }
+    })
+  }
+  await next();
+})
+
+// restify 接口风格统一
+app.use(rest.restify());
+app.use(bodyParser());
+app.use(controller());
+
+
 
 app.on('error', function(err, ctx){
   console.log('server error', err);

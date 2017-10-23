@@ -1,12 +1,12 @@
 <template lang="html">
   <Form ref="singInForm" :model="formItem" :rules="formVaildate" :label-width="80">
-    <FormItem label="用户名" prop="username">
-      <Input type="text" v-model="formItem.username" placeholder="请输入">
+    <FormItem label="用户名" prop="nick">
+      <Input type="text" v-model="formItem.nick" placeholder="请输入">
         <Icon type="ios-person-outline" slot="prepend"></Icon>
       </Input>
     </FormItem>
     <FormItem label="密码" prop="password">
-      <Input type="password" v-model="formItem.password" placeholder="请输入">
+      <Input type="password" v-model="formItem.password" placeholder="请输入" @keyup.enter.native="handleSignIn">
         <Icon type="ios-locked-outline" slot="prepend"></Icon>
       </Input>
     </FormItem>
@@ -23,11 +23,11 @@ export default {
   data() {
     return {
       formItem: {
-        username: '',
+        nick: '',
         password: '',
       },
       formVaildate: {
-        username: [
+        nick: [
           { required: true, message: '用户名不能为空', trigger: 'blur' }
         ],
         password: [
@@ -40,8 +40,11 @@ export default {
     handleSignIn() {
       this.$refs.singInForm.validate(valid => {
           if (valid) {
-            this.axios.post('/api/auth/sign_in', this.formItem, data => {
-              console.log(data);
+            this.axios.post('/api/auth/sign_in', this.formItem)
+            .then(data => {
+              if (!data) return;
+              window.localStorage.setItem('token', data.token);
+              this.$router.push({name: 'dashboard'})
             })
           }
         }

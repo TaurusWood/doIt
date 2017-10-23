@@ -16,7 +16,6 @@ const axios = new API();
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
  */
 Object.defineProperties(Vue.prototype, {
-
   // 存取描述符
   axios: {
     get() {

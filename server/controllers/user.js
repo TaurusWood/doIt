@@ -1,9 +1,11 @@
+const jwt = require('jsonwebtoken');
 const user = require('../model/user');
 const APIError = require('../config/rest').APIError;
+const TOKEN_PRIMARY_KEY = require('../config/config').TOKEN_PRIMARY_KEY;
 
 module.exports = {
   'POST /auth/check_name': async (ctx, next) => {
-    const data = await user.checkName(ctx.request.body.username);
+    const data = await user.checkName(ctx.request.body.nick);
     if (data) {
       ctx.rest({
         message: '该用户名尚未被注册',
@@ -15,7 +17,7 @@ module.exports = {
   },
   'POST /auth/sign_up': async (ctx, next) => {
     const userInfo = {
-      username: ctx.request.body.username,
+      nick: ctx.request.body.nick,
       password: ctx.request.body.password
     };
     const data = await user.signUp(userInfo);
@@ -27,19 +29,24 @@ module.exports = {
   },
   'POST /auth/sign_in': async (ctx, next) => {
     const userInfo = {
-      username: ctx.request.body.username,
+      nick: ctx.request.body.nick,
       password: ctx.request.body.password
     };
     const data = await user.signIn(userInfo);
     if (data) {
-      ctx.rest({data});
+      const userToken = {
+        uid: data.uid,
+        nick: data.nick
+      }
+      // expressed in seconds or a string describing a time span zeit/ms. Eg: 60, "2 days", "10h", "7d"
+      ctx.rest({token: jwt.sign(userToken, TOKEN_PRIMARY_KEY, { expiresIn: '7d' })});
     } else {
       throw new APIError(-2, '用户名或密码错误');
     }
   },
-  'PUT /auth/update_password': async (ctx, next) => {
+  'PUT /update_password': async (ctx, next) => {
     const userInfo = {
-      username: ctx.request.body.username,
+      nick: ctx.request.body.nick,
       password: ctx.request.body.password,
       newPassword: ctx.request.body.newPassword
     }

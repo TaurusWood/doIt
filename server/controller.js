@@ -1,4 +1,5 @@
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
 const router = require('koa-router')();
 
 const addMapping = function (router, mapping) {
@@ -20,6 +21,9 @@ const addMapping = function (router, mapping) {
       path = api.substring(7);
       router.del(path, mapping[api]);
       console.log(`register URL mapping: DELETE ${path}`);
+    } else if (api.startsWith('ALL ')) {
+      path = api.substring(4);
+      router.all(path, mapping[api]);
     } else {
       console.log(`invalid URL: ${url}`);
     }
@@ -36,10 +40,9 @@ const addControllers = function (router, dir) {
     })
 }
 
-
 module.exports = function (dir) {
   const controller_dir = dir || 'controllers';
   addControllers(router, controller_dir);
-  router.use('/api', router.routes())
+  router.use('/api', router.routes());
   return router.routes();
 }

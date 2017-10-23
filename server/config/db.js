@@ -1,5 +1,8 @@
 const Sequelize = require('sequelize');
-const CONFIG = require('./config');
+const CONFIG = require('./config').CONFIG;
+
+const userModel = '../schema/user.js';
+const categoriesModel = '../schema/categories.js';
 
 const doit = new Sequelize(
   CONFIG.DATABASE,
@@ -16,6 +19,16 @@ const doit = new Sequelize(
   }
 )
 
+
+// const doitDB = db.doit;
+const user = doit.import(userModel);
+const categories = doit.import(categoriesModel);
+
+user.hasMany(categories, { foreignKey: 'user_id', targetKey: 'id' });
+categories.belongsTo(user);
+// doit.sync({force: true}).then(res => console.log('模型同步成功'))
+
 module.exports = {
-  doit
+  userTable: user,
+  categoriesTable: categories
 }

@@ -1,20 +1,30 @@
 import axios from 'axios';
+import Qs from 'qs';
 import bus from './bus';
 
 const baseConf = {
   baseURL: '', // 到时候根据生产环境判断
   headers: {'X-Requested-With': 'XMLHttpRequest'},
   timeout: 3000,
+  transformRequest: [
+		function(data) {
+			//由于使用的form-data传数据所以要格式化
+			return Qs.stringify(data);
+		}
+	],
+  // paramsSerializer: function(params) {
+  // 	return Qs.stringify(params)
+  // },
   validateStatus: function (status) {
-    return status !== 400 && status < 500;
-  }
+    return status >= 200 && status < 300; // 默认的
+  },
 }
 
 const errorHandle = function (message) {
   bus.$Message.error(message);
 }
 
-const AjaxCb = function (res) {
+const ajaxCb = function (res, noErrhandle) {
   if (noErrhandle) {
     return res;
   }
@@ -28,21 +38,24 @@ const AjaxCb = function (res) {
 class API {
   get(url, param, noErrhandle) {
     return axios.get(url, param, baseConf)
-    .then(AjaxCb(res))
-    .catch(err => errorHandle(err.response.data.message || '请求参数有误'))
+    .then(ajaxCb(res.data, noErrhandle))
+    .catch(err => errorHandle(err.response.data.message))
   }
 
   post(url, param, noErrhandle) {
     return axios.post(url, param, Object.assign(baseConf, {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    })).then(res => AjaxCb(res))
-    .catch(err => errorHandle(err.response.data.message || '请求参数有误'))
+      // headers: {
+      //   'Content-Type': 'application/x-www-form-urlencoded',
+      //   'X-Requested-With': 'XMLHttpRequest'
+      // }
+    })).then(res => ajaxCb(res.data, noErrhandle))
+    .catch(err => errorHandle(err.response.data.message))
   }
 
   put(url, param, noErrhandle) {
     return axios.put(url, param, baseConf)
-    .then(AjaxCb(res))
-    .catch(err => errorHandle(err.response.data.message || '请求参数有误'))
+    .then(ajaxCb(res.data, noErrhandle))
+    .catch(err => errorHandle(err.response.data.message))
   }
 }
 
