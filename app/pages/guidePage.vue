@@ -6,6 +6,13 @@
 
 <script>
 export default {
+  name: 'guidePage',
+  data() {
+
+  },
+  create() {
+
+  },
 }
 </script>
 

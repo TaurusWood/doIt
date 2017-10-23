@@ -1,5 +1,4 @@
-const doit = require('../config/db');
-const userTable = doit.userTable;
+const userTable = require('../config/db').userTable;
 
 module.exports = {
   checkName: async (nick) => {

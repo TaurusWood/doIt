@@ -4,7 +4,10 @@ import bus from './bus';
 
 const baseConf = {
   baseURL: '', // 到时候根据生产环境判断
-  headers: {'X-Requested-With': 'XMLHttpRequest'},
+  headers: {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-Access-Token': window.localStorage.getItem('token')
+  },
   timeout: 3000,
   transformRequest: [
 		function(data) {
@@ -36,9 +39,13 @@ const ajaxCb = function (res, noErrhandle) {
 }
 
 class API {
+  updateToken(param) {
+    axios.defaults.headers.common['X-Access-Token'] = window.localStorage.getItem('token');
+  }
+
   get(url, param, noErrhandle) {
     return axios.get(url, param, baseConf)
-    .then(ajaxCb(res.data, noErrhandle))
+    .then(res => ajaxCb(res.data, noErrhandle))
     .catch(err => errorHandle(err.response.data.message))
   }
 
@@ -54,7 +61,7 @@ class API {
 
   put(url, param, noErrhandle) {
     return axios.put(url, param, baseConf)
-    .then(ajaxCb(res.data, noErrhandle))
+    .then(res => ajaxCb(res.data, noErrhandle))
     .catch(err => errorHandle(err.response.data.message))
   }
 }

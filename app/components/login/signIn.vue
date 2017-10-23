@@ -36,16 +36,30 @@ export default {
       }
     }
   },
+  computed: {
+
+  },
   methods: {
     handleSignIn() {
       this.$refs.singInForm.validate(valid => {
           if (valid) {
             this.axios.post('/api/auth/sign_in', this.formItem)
-            .then(data => {
-              if (!data) return;
-              window.localStorage.setItem('token', data.token);
-              this.$router.push({name: 'dashboard'})
-            })
+              .then(res => {
+                if (!res) return;
+                window.localStorage.setItem('token', res.token);
+                this.axios.updateToken();
+                // this.axios.default.headers.common['X-Access-Token'] = res.token;
+                // console.log(this.axios.default.headers);
+
+                this.$store.dispatch('getCategories', { user_id: res.data.user_id })
+                  .then(hasCategories => {
+                    if (hasCategories) {
+                      this.$router.push({name: 'guide'});
+                    } else {
+                      this.$router.push({name: 'dashboard'});
+                    }
+                  })
+              })
           }
         }
       )

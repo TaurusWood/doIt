@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    categories: null,
     todoList: [
       {
         name: '工作',
@@ -52,8 +53,20 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    getCategories(state, data) {
+      state.categories = data;
+    },
     addTodoItem(state, data) {
       state.todoItem.push(data);
+    }
+  },
+  actions: {
+    getCategories({ commit }, user_id) {
+      return Vue.prototype.axios.get('/api/dashboard/get_categories', { params: user_id }, true)
+        .then(res => {
+          commit('getCategories', res.data);
+          return res.data.length ? false : true;
+        })
     }
   }
 })

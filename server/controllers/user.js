@@ -35,11 +35,14 @@ module.exports = {
     const data = await user.signIn(userInfo);
     if (data) {
       const userToken = {
-        uid: data.uid,
+        user_id: data.uid,
         nick: data.nick
       }
       // expressed in seconds or a string describing a time span zeit/ms. Eg: 60, "2 days", "10h", "7d"
-      ctx.rest({token: jwt.sign(userToken, TOKEN_PRIMARY_KEY, { expiresIn: '7d' })});
+      ctx.rest({
+        token: jwt.sign(userToken, TOKEN_PRIMARY_KEY, { expiresIn: '7d' }),
+        data: userToken
+      });
     } else {
       throw new APIError(-2, '用户名或密码错误');
     }

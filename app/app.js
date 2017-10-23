@@ -8,6 +8,7 @@ import App from './app.vue';
 import 'iview/dist/styles/iview.css';
 
 const axios = new API();
+// import axios from 'axios';
 
 /* Object.defineProperty(obj, prop, descriptor)
  * 对象里目前存在的属性描述符有两种主要形式：数据描述符和存取描述符。

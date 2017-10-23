@@ -65,9 +65,10 @@ app.use(async function(ctx, next){
 
 // token valid
 app.use(async function (ctx, next) {
-  if (ctx.url.indexOf('/api/auth/') === -1) {
-    const token = ctx.request.headers['x-access-token']
+  if (ctx.url.indexOf('/api') > -1 && ctx.url.indexOf('/api/auth/') === -1) {
+    const token = ctx.request.header['x-access-token']  // X-Access-Token 会被转换成小写
     jwt.verify(token, TOKEN_PRIMARY_KEY, function (err, decoded) {
+      console.log('err: ', err);
       if (err) {
           ctx.response.status = 401;
           ctx.response.body = {
