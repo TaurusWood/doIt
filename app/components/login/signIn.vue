@@ -48,10 +48,7 @@ export default {
                 if (!res) return;
                 window.localStorage.setItem('token', res.token);
                 this.axios.updateToken();
-                // this.axios.default.headers.common['X-Access-Token'] = res.token;
-                // console.log(this.axios.default.headers);
-
-                this.$store.dispatch('getCategories', { user_id: res.data.user_id })
+                  this.$store.dispatch('getCategories')
                   .then(hasCategories => {
                     if (hasCategories) {
                       this.$router.push({name: 'guide'});

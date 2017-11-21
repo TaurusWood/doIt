@@ -39,7 +39,7 @@ const ajaxCb = function (res, noErrhandle) {
 }
 
 class API {
-  updateToken(param) {
+  updateToken() {
     axios.defaults.headers.common['X-Access-Token'] = window.localStorage.getItem('token');
   }
 

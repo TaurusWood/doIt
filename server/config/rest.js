@@ -10,11 +10,13 @@ module.exports = {
   restify: (pathPrefix) => {
     pathPrefix = pathPrefix || '/api/';
     return async (ctx, next) => {
+      console.log(ctx.request.path.startsWith('/api/guide'));
       if (ctx.request.path.startsWith(pathPrefix)) {
         ctx.rest = result => {
+          let code = (!result.code && result.code !== 0) ? 1 : result.code;
           ctx.response.type = 'application/json';
           ctx.response.body = {
-            code: result.code || 1,
+            code: code,
             message: result.message || '',
             data: result.data || ''
           };

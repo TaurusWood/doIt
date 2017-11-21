@@ -27,6 +27,11 @@ Object.defineProperties(Vue.prototype, {
   $http: { value: axios }
 })
 
+if (window.localStorage.getItem('token')) {
+  console.info('has request token');
+  Vue.prototype.axios.updateToken();
+}
+
 Vue.use(iview);
 new Vue({
   el: '#app',
