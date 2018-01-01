@@ -15,7 +15,8 @@ const doit = new Sequelize(
       max: 5,
       min: 0,
       idle: 30000
-    }
+    },
+    timezone: CONFIG.TIMEZONE
   }
 )
 
@@ -24,8 +25,7 @@ const doit = new Sequelize(
 const user = doit.import(userModel);
 const categories = doit.import(categoriesModel);
 
-user.hasMany(categories, { foreignKey: 'user_id', targetKey: 'id' });
-categories.belongsTo(user);
+user.hasMany(categories, { as: 'category', foreignKey: 'user_id', targetKey: 'cat_id' });
 // doit.sync({force: true}).then(res => console.log('模型同步成功'))
 
 module.exports = {

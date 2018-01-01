@@ -36,12 +36,12 @@ export default {
   },
   methods: {
     postRecommendList() {
-      const postData = this.recommendList.map(i => {
-        if (i.selected) {
-          return i.title;
+      const postData = this.recommendList.filter(i => i.selected).map(i => {
+        if (i.title) {
+          return {title: i.title}
         }
-      })
-      this.$store.dispatch('addCategories', { postData }).then(() => {
+      });
+      this.$store.dispatch('addCategories', postData).then(() => {
         this.$router.push({name: 'dashboard'});
       })
     }

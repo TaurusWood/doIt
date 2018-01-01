@@ -5,13 +5,14 @@ module.exports = function(sequelize, DataTypes) {
     id: {
       type: DataTypes.INTEGER(10),
       autoIncrement: true,
-      primaryKey: true,
-      allowNull: false
+      allowNull: false,
+      unique: true   // 确定唯一索引
     },
     uid: {
       type: DataTypes.STRING(12),
       defaultValue: generateUUID(12, 16),
-      allowNull: false,
+      primaryKey: true,
+      allowNull: false
     },
     nick: {
       type: DataTypes.STRING(100),

@@ -924,7 +924,7 @@ bluebird@^3.0.5, bluebird@^3.1.1, bluebird@^3.4.7:
   version "3.5.0"
   resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
-bluebird@^3.4.6:
+bluebird@^3.3.4, bluebird@^3.4.6:
   version "3.5.1"
   resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
@@ -1226,6 +1226,10 @@ cls-bluebird@^2.0.1:
   dependencies:
     is-bluebird "^1.0.2"
     shimmer "^1.1.0"
+
+cluster-key-slot@^1.0.6:
+  version "1.0.8"
+  resolved "http://registry.npm.taobao.org/cluster-key-slot/download/cluster-key-slot-1.0.8.tgz#7654556085a65330932a2e8b5976f8e2d0b3e414"
 
 co-body@^5.1.0:
   version "5.1.1"
@@ -1653,7 +1657,7 @@ delegates@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/delegates/download/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
 
-denque@^1.1.1:
+denque@^1.1.0, denque@^1.1.1:
   version "1.2.2"
   resolved "http://registry.npm.taobao.org/denque/download/denque-1.2.2.tgz#e06cf7cf0da8badc88cbdaabf8fc0a70d659f1d4"
 
@@ -2153,6 +2157,10 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/flatten/download/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
+flexbuffer@0.0.6:
+  version "0.0.6"
+  resolved "http://registry.npm.taobao.org/flexbuffer/download/flexbuffer-0.0.6.tgz#039fdf23f8823e440c38f3277e6fef1174215b30"
+
 follow-redirects@^1.2.3:
   version "1.2.5"
   resolved "http://registry.npm.taobao.org/follow-redirects/download/follow-redirects-1.2.5.tgz#ffd3e14cbdd5eaa72f61b6368c1f68516c2a26cc"
@@ -2638,6 +2646,34 @@ invert-kv@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/invert-kv/download/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
 
+ioredis@^3.2.1:
+  version "3.2.1"
+  resolved "http://registry.npm.taobao.org/ioredis/download/ioredis-3.2.1.tgz#4c10bcce9659fdb0af923b0e7915208fe023d3f0"
+  dependencies:
+    bluebird "^3.3.4"
+    cluster-key-slot "^1.0.6"
+    debug "^2.2.0"
+    denque "^1.1.0"
+    flexbuffer "0.0.6"
+    lodash.assign "^4.2.0"
+    lodash.bind "^4.2.1"
+    lodash.clone "^4.5.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.defaults "^4.2.0"
+    lodash.difference "^4.5.0"
+    lodash.flatten "^4.4.0"
+    lodash.foreach "^4.5.0"
+    lodash.isempty "^4.4.0"
+    lodash.keys "^4.2.0"
+    lodash.noop "^3.0.1"
+    lodash.partial "^4.2.1"
+    lodash.pick "^4.4.0"
+    lodash.sample "^4.2.1"
+    lodash.shuffle "^4.2.0"
+    lodash.values "^4.3.0"
+    redis-commands "^1.2.0"
+    redis-parser "^2.4.0"
+
 ip@^1.1.0, ip@^1.1.5:
   version "1.1.5"
   resolved "http://registry.npm.taobao.org/ip/download/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
@@ -3041,6 +3077,10 @@ koa-send@^4.1.0:
     mz "^2.6.0"
     resolve-path "^1.3.3"
 
+koa-session2@^2.2.5:
+  version "2.2.5"
+  resolved "http://registry.npm.taobao.org/koa-session2/download/koa-session2-2.2.5.tgz#555af1ee28a47c566968b4239b14c05715dbb3c1"
+
 koa-static@^4.0.1:
   version "4.0.1"
   resolved "http://registry.npm.taobao.org/koa-static/download/koa-static-4.0.1.tgz#b99521ed848d7adb79acae9c824d8d8277a8c4d5"
@@ -3156,13 +3196,37 @@ lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "http://registry.npm.taobao.org/lodash.assign/download/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
 
+lodash.bind@^4.2.1:
+  version "4.2.1"
+  resolved "http://registry.npm.taobao.org/lodash.bind/download/lodash.bind-4.2.1.tgz#7ae3017e939622ac31b7d7d7dcb1b34db1690d35"
+
 lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "http://registry.npm.taobao.org/lodash.camelcase/download/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
 
-lodash.clonedeep@^4.3.2:
+lodash.clone@^4.5.0:
+  version "4.5.0"
+  resolved "http://registry.npm.taobao.org/lodash.clone/download/lodash.clone-4.5.0.tgz#195870450f5a13192478df4bc3d23d2dea1907b6"
+
+lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "http://registry.npm.taobao.org/lodash.clonedeep/download/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+
+lodash.defaults@^4.2.0:
+  version "4.2.0"
+  resolved "http://registry.npm.taobao.org/lodash.defaults/download/lodash.defaults-4.2.0.tgz#d09178716ffea4dde9e5fb7b37f6f0802274580c"
+
+lodash.difference@^4.5.0:
+  version "4.5.0"
+  resolved "http://registry.npm.taobao.org/lodash.difference/download/lodash.difference-4.5.0.tgz#9ccb4e505d486b91651345772885a2df27fd017c"
+
+lodash.flatten@^4.4.0:
+  version "4.4.0"
+  resolved "http://registry.npm.taobao.org/lodash.flatten/download/lodash.flatten-4.4.0.tgz#f31c22225a9632d2bbf8e4addbef240aa765a61f"
+
+lodash.foreach@^4.5.0:
+  version "4.5.0"
+  resolved "http://registry.npm.taobao.org/lodash.foreach/download/lodash.foreach-4.5.0.tgz#1a6a35eace401280c7f06dddec35165ab27e3e53"
 
 lodash.includes@^4.3.0:
   version "4.3.0"
@@ -3171,6 +3235,10 @@ lodash.includes@^4.3.0:
 lodash.isboolean@^3.0.3:
   version "3.0.3"
   resolved "http://registry.npm.taobao.org/lodash.isboolean/download/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
+
+lodash.isempty@^4.4.0:
+  version "4.4.0"
+  resolved "http://registry.npm.taobao.org/lodash.isempty/download/lodash.isempty-4.4.0.tgz#6f86cbedd8be4ec987be9aaf33c9684db1b31e7e"
 
 lodash.isinteger@^4.0.4:
   version "4.0.4"
@@ -3188,6 +3256,10 @@ lodash.isstring@^4.0.1:
   version "4.0.1"
   resolved "http://registry.npm.taobao.org/lodash.isstring/download/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
 
+lodash.keys@^4.2.0:
+  version "4.2.0"
+  resolved "http://registry.npm.taobao.org/lodash.keys/download/lodash.keys-4.2.0.tgz#a08602ac12e4fb83f91fc1fb7a360a4d9ba35205"
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "http://registry.npm.taobao.org/lodash.memoize/download/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -3196,9 +3268,29 @@ lodash.mergewith@^4.6.0:
   version "4.6.0"
   resolved "http://registry.npm.taobao.org/lodash.mergewith/download/lodash.mergewith-4.6.0.tgz#150cf0a16791f5903b8891eab154609274bdea55"
 
+lodash.noop@^3.0.1:
+  version "3.0.1"
+  resolved "http://registry.npm.taobao.org/lodash.noop/download/lodash.noop-3.0.1.tgz#38188f4d650a3a474258439b96ec45b32617133c"
+
 lodash.once@^4.0.0:
   version "4.1.1"
   resolved "http://registry.npm.taobao.org/lodash.once/download/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
+
+lodash.partial@^4.2.1:
+  version "4.2.1"
+  resolved "http://registry.npm.taobao.org/lodash.partial/download/lodash.partial-4.2.1.tgz#49f3d8cfdaa3bff8b3a91d127e923245418961d4"
+
+lodash.pick@^4.4.0:
+  version "4.4.0"
+  resolved "http://registry.npm.taobao.org/lodash.pick/download/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
+
+lodash.sample@^4.2.1:
+  version "4.2.1"
+  resolved "http://registry.npm.taobao.org/lodash.sample/download/lodash.sample-4.2.1.tgz#5e4291b0c753fa1abeb0aab8fb29df1b66f07f6d"
+
+lodash.shuffle@^4.2.0:
+  version "4.2.0"
+  resolved "http://registry.npm.taobao.org/lodash.shuffle/download/lodash.shuffle-4.2.0.tgz#145b5053cf875f6f5c2a33f48b6e9948c6ec7b4b"
 
 lodash.tail@^4.1.1:
   version "4.1.1"
@@ -3207,6 +3299,10 @@ lodash.tail@^4.1.1:
 lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "http://registry.npm.taobao.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
+
+lodash.values@^4.3.0:
+  version "4.3.0"
+  resolved "http://registry.npm.taobao.org/lodash.values/download/lodash.values-4.3.0.tgz#a3a6c2b0ebecc5c2cba1c17e6e620fe81b53d347"
 
 lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.1, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@~4.17.4:
   version "4.17.4"
@@ -4398,6 +4494,14 @@ redeyed@~1.0.0:
   resolved "http://registry.npm.taobao.org/redeyed/download/redeyed-1.0.1.tgz#e96c193b40c0816b00aec842698e61185e55498a"
   dependencies:
     esprima "~3.0.0"
+
+redis-commands@^1.2.0:
+  version "1.3.1"
+  resolved "http://registry.npm.taobao.org/redis-commands/download/redis-commands-1.3.1.tgz#81d826f45fa9c8b2011f4cd7a0fe597d241d442b"
+
+redis-parser@^2.4.0:
+  version "2.6.0"
+  resolved "http://registry.npm.taobao.org/redis-parser/download/redis-parser-2.6.0.tgz#52ed09dacac108f1a631c07e9b69941e7a19504b"
 
 reduce-css-calc@^1.2.6:
   version "1.3.0"

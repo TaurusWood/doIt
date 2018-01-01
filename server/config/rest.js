@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 const PRIMARY_KEY = require('../config/config').PRIMARY_KEY;
 
 module.exports = {
-  APIError: function (code, message) {
+  APIError: function (message) {
     this.status = 200;
-    this.code = code || -99;
+    this.success = false;
     this.message = message || 'internal: unknown_error';
   },
   restify: (pathPrefix) => {
@@ -13,13 +13,16 @@ module.exports = {
       console.log(ctx.request.path.startsWith('/api/guide'));
       if (ctx.request.path.startsWith(pathPrefix)) {
         ctx.rest = result => {
-          let code = (!result.code && result.code !== 0) ? 1 : result.code;
           ctx.response.type = 'application/json';
           ctx.response.body = {
-            code: code,
-            message: result.message || '',
-            data: result.data || ''
+            success: result.success || true,
           };
+          if (result.data) {
+            ctx.response.body.data = result.data;
+          }
+          if (result.message) {
+            ctx.response.body.message = result.message;
+          }
           if (result.token) {
             ctx.response.body.token = result.token;
           }
@@ -30,7 +33,7 @@ module.exports = {
           // ctx.response.status = 400; // ???
           ctx.response.type = 'application/json';
           ctx.response.body = {
-            code: e.code || -99,
+            success: false,
             message: e.message || 'internal: unknown_error'
           }
         }

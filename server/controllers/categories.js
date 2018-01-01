@@ -1,27 +1,34 @@
 const categories = require('../model/categories');
 
+const filterTimeAt = function (data) {
+  delete data.created_at;
+  delete data.deleted_at;
+  delete data.updated_at;
+  return data;
+}
+
 module.exports = {
-  'GET /get_categories': async(ctx, next) => {
-    const data = await categories.getCategories(ctx.query); // ctx.request.query
-    const code = data.length ? 1 : 0;
+  'GET /get_categories': async (ctx, next) => {
+    let data = await categories.getCategories(ctx.session.user_id);
+    data = filterTimeAt(data);
+    ctx.rest({ data })
+  },
+  'POST /add_categories': async (ctx, next) => {
+    // console.log('ctx.session.user_id: ', ctx.session.user_id);
+    // console.log('ctx.request.query: ', ctx.request.query);  // get
+    // console.log('ctx.request.body: ', ctx.request.body)  // post
+    let data = await categories.addCategories(ctx.request.body, ctx.session.user_id);
+    data = filterTimeAt(data);
     ctx.rest({
-      code,
-      data
+      message: '添加成功',
+      data,
     })
   },
-  'POST /add_categories': async(ctx, next) => {
-    const data = await categories.addCategories(ctx.query);
-
-  }
-  'GET /guide/get_recommend': async(ctx, next) => {
-    const data = [
-      { locked: false, title: '想看的电影'},
-      { locked: false, title: '想读的书' },
-      { locked: false, title: '想买的东西' },
-      { locked: false, title: '想去的地方' },
-      { locked: true, title: '秘密' }
-    ]
-    ctx.rest({ data });
-    next();
+  'POST /del_categories': async (ctx, next) => {
+    const data = await categories.delCategories(ctx.request.body);
+    ctx.rest({
+      message: '删除成功',
+      data,
+    })
   }
 }

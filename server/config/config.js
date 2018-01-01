@@ -3,6 +3,7 @@ const CONFIG = {
   USERNAME: 'root',
   PASSWORD: '12345',
   HOST: 'localhost',
+  TIMEZONE: '+08:00',
   PORT: 3306  // mysql默认3306
 };
 

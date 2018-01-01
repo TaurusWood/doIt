@@ -6,11 +6,13 @@ const webpackConf = require('./webpack.dev.conf');  // 目前就只有开发环�
 
 const koa = require('koa');
 const jwt = require('jsonwebtoken');
+const session = require('koa-session2');
 
 const bodyParser = require('koa-bodyparser');
 const serve = require('koa-static');
 const historyApiFallback = require('koa2-history-api-fallback');
 
+const Store = require('../server/config/store');
 const controller = require('../server/controller');
 const rest = require('../server/config/rest');
 const TOKEN_PRIMARY_KEY = require('../server/config/config').TOKEN_PRIMARY_KEY;
@@ -56,6 +58,11 @@ const readyPromise = new Promise(resolve => {
   resolve();
 });
 
+app.use(session({
+    key: "SESSIONID",
+    store: new Store()
+}));
+
 app.use(async function(ctx, next){
   let start = new Date;
   await next();
@@ -75,11 +82,23 @@ app.use(async function (ctx, next) {
             code: -100,
             message: 'invalid token',
           };
+      } else {
+        console.log('decoded: ', decoded);
       }
     })
   }
   await next();
 })
+
+// session
+// app.use(async function (ctx, next) {
+//   const sessionId = ctx.cookies.get('SESSIONID');
+//   const userInfo = ctx.session;
+//   console.log('ctx.session-s: ', ctx.session);
+//   console.log('userInfo: ', userInfo);
+//   console.log('SESSIONID: ', sessionId);
+//   await next();
+// })
 
 // restify 接口风格统一
 app.use(rest.restify());

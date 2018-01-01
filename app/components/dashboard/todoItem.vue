@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .todo-item {
+  .dashboard-page .todo-item {
     margin-top: 50px;
     ul {
       li {

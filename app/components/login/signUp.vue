@@ -87,7 +87,7 @@ export default {
           this.axios.post('/api/auth/sign_up', this.formItem)
           .then(res => {
             if (res.data) {
-              this.$router.push({name: '/dashboard'});
+              this.$router.push({name: 'guide'});
             }
           })
         }

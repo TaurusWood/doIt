@@ -1,17 +1,15 @@
+const generateUUID = require('../config/uuid');
+
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('categories', {
-    id: {
+    cat_id: {
       type: DataTypes.INTEGER(10),
-      autoIncrement: true,
+      autoIncrement: false,
       allowNull: false,
       primaryKey: true
     },
     title: {
       type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    count: {
-      type: DataTypes.INTEGER(11),
       allowNull: false
     },
     flag: {

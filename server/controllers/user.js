@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const user = require('../model/user');
+const categories = require('../model/categories');
 const APIError = require('../config/rest').APIError;
 const TOKEN_PRIMARY_KEY = require('../config/config').TOKEN_PRIMARY_KEY;
 
@@ -12,7 +13,7 @@ module.exports = {
         data
       });
     } else {
-      throw new APIError(-1, '用户名已存在');
+      throw new APIError('用户名已存在');
     }
   },
   'POST /auth/sign_up': async (ctx, next) => {
@@ -34,18 +35,28 @@ module.exports = {
     };
     const data = await user.signIn(userInfo);
     if (data) {
+      const hasCategories = await categories.hasCategories(data.uid);
       const userToken = {
         user_id: data.uid,
-        nick: data.nick
+        nick: data.nick,
+        has_cat: hasCategories
       }
+      // 储存session
+      ctx.session = userToken;
       // expressed in seconds or a string describing a time span zeit/ms. Eg: 60, "2 days", "10h", "7d"
       ctx.rest({
         token: jwt.sign(userToken, TOKEN_PRIMARY_KEY, { expiresIn: '7d' }),
         data: userToken
       });
     } else {
-      throw new APIError(-2, '用户名或密码错误');
+      throw new APIError('用户名或密码错误');
     }
+  },
+  'POST /auth/sign_out': async (ctx, next) => {
+    ctx.session = null;
+    ctx.rest({
+      message: '用户已注销'
+    })
   },
   'PUT /update_password': async (ctx, next) => {
     const userInfo = {
@@ -60,7 +71,7 @@ module.exports = {
         data
       });
     } else {
-      throw new APIError(-2, '用户名或密码错误');
+      throw new APIError('用户名或密码错误');
     }
   }
 }
